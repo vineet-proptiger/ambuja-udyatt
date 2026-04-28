@@ -38,6 +38,9 @@ export async function POST(request) {
     /* ── Required fields ── */
     let phone = get('phone').replace(/\D/g, '')
     if (phone.length > 10) phone = phone.slice(-10)
+    if (phone.length > 0 && phone.length < 10) {
+      return Response.json({ status: false, msg: 'Invalid phone number' })
+    }
     const email = get('email')
 
     if (phone === '' && email === '') {
