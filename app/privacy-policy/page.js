@@ -26,12 +26,17 @@ export default function PrivacyPolicy() {
         <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, var(--color-gold), var(--color-gold-light), var(--color-gold))` }}></div>
 
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-[80px]">
-          <Link href="/" className="flex items-center">
-            <img src={logoImages.tarc} alt="Ambuja Udyatt" className="h-10 sm:h-14 w-auto object-contain" />
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src={logoImages.tarc}
+              alt="Ambuja Udyatt"
+              className="h-[60px] sm:h-[70px] md:h-[80px] w-auto object-contain transition-all md:scale-[1.3] origin-left"
+            />
           </Link>
           <Link
             href="/"
             className="btn-gold shadow-lg"
+            style={{ padding: '8px 16px', fontSize: '12px' }}
           >
             ← BACK TO HOME
           </Link>

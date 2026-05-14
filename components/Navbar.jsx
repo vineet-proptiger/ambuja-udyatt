@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { logoImages } from '../lib/images'
@@ -21,7 +21,7 @@ const ProjectLogo = () => (
   <img
     src={logoImages.tarc}
     alt="Ambuja Udyatt"
-    className="h-[70px] md:h-[80px] w-auto object-contain transition-all scale-[1.25] md:scale-[1.3] origin-left"
+    className="h-[60px] sm:h-[70px] md:h-[80px] w-auto object-contain transition-all md:scale-[1.3] origin-left"
     style={{ maxWidth: '450px' }}
   />
 )
