@@ -93,13 +93,14 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Details' }) => {
       <div className="flex items-start gap-2 mt-3">
         <input type="checkbox" id="privacy-lead" required defaultChecked className="mt-0.5 shrink-0" style={{ accentColor: GOLD }} />
         <label htmlFor="privacy-lead" className="text-xs text-gray-500 leading-relaxed cursor-pointer" style={{ fontFamily: F_SANS }}>
-          I authorize the developer &amp; its representatives to contact me via Email / SMS / WhatsApp / Call. This will override DND / NDNC settings.
+          I agree to receive updates as per the{' '}
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: 'underline' }}>Privacy Policy</a>
         </label>
       </div>
 
       <button type="submit" disabled={loading}
-        className="btn-gold mt-4 w-full"
-        style={{ padding: '14px' }}>
+        className="btn-gold mt-4"
+        style={{ padding: '14px', width: '80%', display: 'flex', marginLeft: 'auto', marginRight: 'auto' }}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
         </svg>
