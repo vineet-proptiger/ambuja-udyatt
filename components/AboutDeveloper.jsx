@@ -25,7 +25,10 @@ const ContactForm = () => {
     })
   }, [])
 
-  const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handle = (e) => {
+    const { name, value } = e.target
+    setForm({ ...form, [name]: name === 'phone' ? value.replace(/\D/g, '').slice(0, 10) : value })
+  }
 
   const submit = async (e) => {
     e.preventDefault()
@@ -46,8 +49,20 @@ const ContactForm = () => {
     try {
       const res = await fetch(API_ENDPOINT, { method: 'POST', body: payload })
       const data = await res.json()
-      if (data.status) setSuccess(true)
-      else setError(data.msg || 'Something went wrong.')
+      if (data.status) {
+        setSuccess(true)
+        if (typeof window !== 'undefined') {
+          window.dataLayer = window.dataLayer || []
+          const nameParts = form.fullname.trim().split(' ')
+          window.dataLayer.push({
+            event: 'lead_submit_success', form_name: 'Developer Section Form',
+            user_data: {
+              email: form.email.trim() || undefined, phone: `+91${form.phone}`,
+              first_name: nameParts[0] || '', last_name: nameParts.slice(1).join(' ') || ''
+            }
+          })
+        }
+      } else setError(data.msg || 'Something went wrong.')
     } catch { setError('Network error. Please try again.') }
     finally { setLoading(false) }
   }

@@ -25,7 +25,10 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Details' }) => {
     })
   }, [])
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: name === 'phone' ? value.replace(/\D/g, '').slice(0, 10) : value })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -54,7 +57,7 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Details' }) => {
           window.dataLayer.push({
             event: 'lead_submit_success', form_name: formName,
             user_data: {
-              email: formData.email.trim() || undefined, phone: formData.phone,
+              email: formData.email.trim() || undefined, phone: `+91${formData.phone}`,
               first_name: nameParts[0] || '', last_name: nameParts.slice(1).join(' ') || '', address: geoAddress
             }
           })
